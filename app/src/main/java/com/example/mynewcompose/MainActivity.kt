@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MyBox()
+                    prueba1()
                 }
             }
         }
@@ -92,13 +92,20 @@ fun MyRow(){
     }
 }
 
+@Composable
+fun prueba1(){
+    Box(modifier = Modifier.fillMaxSize()){
+        Text(text = "Holi")
+    }
+}
+
 
 
 @Composable
-fun MiCaja2(mensaje:String){
-    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center){
-        Box(modifier = Modifier.background(Color.Red)){
-            Text("${mensaje} esta es mi segunda caja")
+fun MiCaja2(nombres:List<String>){
+    Column(modifier = Modifier.fillMaxSize()) {
+        for (nombre in nombres){
+            Text(text = "Hola $nombre")
         }
     }
 }
@@ -107,6 +114,8 @@ fun MiCaja2(mensaje:String){
 @Composable
 fun GreetingPreview() {
     MyNewComposeTheme {
-        MyRow()
+        val myList: List<String> = listOf("David","Ivan","iñaki")
+        MiCaja2(myList)
+        prueba1()
     }
 }
